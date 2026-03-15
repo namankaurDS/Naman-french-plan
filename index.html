@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Plan de Français — A1 → B2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F7F4EF;
+  --ink: #1A1814;
+  --muted: #6B6760;
+  --line: #E2DDD6;
+  --purple: #5B4FCF;
+  --purple-light: #EDEAFC;
+  --teal: #0F7A5A;
+  --teal-light: #E0F4EC;
+  --coral: #C4451E;
+  --coral-light: #FAEBE6;
+  --amber: #A8620A;
+  --amber-light: #FDF0DA;
+  --red-light: #FDECEA;
+  --red: #B83232;
+  --accent: #C4451E;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ─── HEADER ─── */
+.site-header {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 3rem 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: 'FR';
+  position: absolute;
+  right: -20px;
+  top: -30px;
+  font-family: 'Playfair Display', serif;
+  font-size: 180px;
+  color: rgba(255,255,255,0.04);
+  font-weight: 600;
+  letter-spacing: -8px;
+  pointer-events: none;
+}
+.header-inner { max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: .75rem;
+}
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: .6rem;
+}
+.header-title em { font-style: italic; color: #E8A87C; }
+.header-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  max-width: 520px;
+  line-height: 1.65;
+}
+.header-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+.hpill {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+}
+
+/* ─── NAV ─── */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 0;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 13px 16px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: .02em;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: rgba(255,255,255,0.8); }
+.nav-btn.active { color: #E8A87C; border-bottom-color: #E8A87C; }
+
+/* ─── MAIN ─── */
+.main { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+.section { display: none; }
+.section.active { display: block; }
+
+/* ─── SECTION TITLE ─── */
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: .3rem;
+}
+.sec-sub { font-size: 13px; color: var(--muted); margin-bottom: 2rem; }
+
+/* ─── PROGRESS BAR ─── */
+.progress-banner {
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.progress-label { font-size: 12px; font-weight: 500; letter-spacing: .05em; color: rgba(255,255,255,.5); text-transform: uppercase; }
+.progress-count { font-family: 'Playfair Display', serif; font-size: 2rem; color: #E8A87C; line-height: 1; }
+.progress-bar-wrap { flex: 1; min-width: 140px; }
+.progress-bar-track { height: 4px; background: rgba(255,255,255,.12); border-radius: 2px; overflow: hidden; }
+.progress-bar-fill { height: 4px; background: linear-gradient(90deg, #E8A87C, #C4451E); border-radius: 2px; transition: width .4s; }
+.progress-pct { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 5px; }
+
+/* ─── PHASE CARDS ─── */
+.phase-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 2rem; }
+@media(max-width:620px){ .phase-grid { grid-template-columns: 1fr; } }
+.phase-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-top: 4px solid;
+}
+.ph1 { border-top-color: var(--purple); }
+.ph2 { border-top-color: var(--teal); }
+.ph3 { border-top-color: var(--coral); }
+.phase-num { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.phase-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 3px; }
+.phase-range { font-size: 11px; color: var(--muted); margin-bottom: .75rem; }
+.phase-body { font-size: 13px; color: #4a4742; line-height: 1.6; }
+.phase-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: .65rem;
+}
+.ph1 .phase-tag { background: var(--purple-light); color: var(--purple); }
+.ph2 .phase-tag { background: var(--teal-light); color: var(--teal); }
+.ph3 .phase-tag { background: var(--coral-light); color: var(--coral); }
+
+/* ─── SCHEDULE GRID ─── */
+.sched-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+@media(max-width:520px){ .sched-grid { grid-template-columns: 1fr; } }
+.sched-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+.sched-header { display: flex; align-items: center; gap: 10px; margin-bottom: .75rem; }
+.sched-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.si-listen { background: var(--teal-light); }
+.si-speak { background: var(--coral-light); }
+.si-read { background: var(--purple-light); }
+.si-write { background: var(--amber-light); }
+.sched-title { font-weight: 500; font-size: 14px; }
+.sched-time { font-size: 11px; color: var(--muted); }
+.sched-desc { font-size: 13px; color: #4a4742; line-height: 1.6; margin-bottom: .6rem; }
+.sched-note {
+  font-size: 11px;
+  padding: 6px 10px;
+  background: var(--cream);
+  border-radius: 6px;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+}
+
+/* ─── CHANNEL SECTION ─── */
+.skill-section { margin-bottom: 2.5rem; }
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid var(--line);
+}
+.skill-icon-big {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.skill-h-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+.skill-h-sub { font-size: 12px; color: var(--muted); }
+.channels-list { display: flex; flex-direction: column; gap: 10px; }
+
+/* ─── CHANNEL CARD ─── */
+.ch-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: box-shadow .15s;
+}
+.ch-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+.ch-check-wrap { padding-top: 2px; flex-shrink: 0; }
+.ch-check {
+  width: 18px; height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+  flex-shrink: 0;
+}
+.ch-check.checked { background: var(--teal); border-color: var(--teal); }
+.ch-check.checked::after { content: '✓'; color: white; font-size: 11px; font-weight: 700; }
+.ch-body { flex: 1; min-width: 0; }
+.ch-top { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.ch-name { font-weight: 500; font-size: 14px; }
+.ch-level-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.badge-purple { background: var(--purple-light); color: var(--purple); }
+.badge-teal   { background: var(--teal-light);   color: var(--teal); }
+.badge-coral  { background: var(--coral-light);   color: var(--coral); }
+.badge-amber  { background: var(--amber-light);   color: var(--amber); }
+.badge-red    { background: var(--red-light);     color: var(--red); }
+.ch-focus-tag { font-size: 11px; color: var(--muted); margin-bottom: 5px; }
+.ch-desc { font-size: 13px; color: #4a4742; line-height: 1.55; margin-bottom: .6rem; }
+.ch-link-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.yt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  background: #FF0000;
+  padding: 5px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity .15s;
+  flex-shrink: 0;
+}
+.yt-link:hover { opacity: .85; }
+.yt-link svg { width: 13px; height: 13px; fill: white; }
+.ch-phase-note { font-size: 11px; color: var(--muted); font-style: italic; }
+
+/* ─── TIPS ─── */
+.tips-grid { display: flex; flex-direction: column; gap: 10px; }
+.tip-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.tip-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--line);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: right;
+}
+.tip-body { flex: 1; }
+.tip-title { font-weight: 500; font-size: 14px; margin-bottom: 3px; }
+.tip-text { font-size: 13px; color: #4a4742; line-height: 1.6; }
+
+/* ─── WARN BOX ─── */
+.info-box {
+  border-radius: 10px;
+  padding: .9rem 1.1rem;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.info-box.purple { background: var(--purple-light); color: #3730a3; border-left: 3px solid var(--purple); }
+.info-box.amber  { background: var(--amber-light);  color: #78400a; border-left: 3px solid var(--amber); }
+.info-box.teal   { background: var(--teal-light);   color: #075244; border-left: 3px solid var(--teal); }
+.info-box.coral  { background: var(--coral-light);  color: #8b3014; border-left: 3px solid var(--coral); }
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  max-width: 900px;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow">Language Learning Plan · 2025</div>
+    <h1 class="header-title">Mon Plan de <em>Français</em></h1>
+    <p class="header-sub">A structured 3-month journey from A1 to B1/B2 — 2 hours daily, 30 min per skill, focused on professional, vocational and conversational French.</p>
+    <div class="header-pills">
+      <span class="hpill">15 March → 15 June 2025</span>
+      <span class="hpill">A1 → B1 / B2</span>
+      <span class="hpill">30 min × 4 skills daily</span>
+      <span class="hpill">Sentence-Based Learning</span>
+      <span class="hpill">Admin & Conversation Focus</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showTab('overview',this)">Overview</button>
+    <button class="nav-btn" onclick="showTab('schedule',this)">Daily Schedule</button>
+    <button class="nav-btn" onclick="showTab('listening',this)">👂 Listening</button>
+    <button class="nav-btn" onclick="showTab('speaking',this)">🗣️ Speaking</button>
+    <button class="nav-btn" onclick="showTab('reading',this)">📖 Reading</button>
+    <button class="nav-btn" onclick="showTab('writing',this)">✍️ Writing</button>
+    <button class="nav-btn" onclick="showTab('stories',this)">✨ Storytelling</button>
+    <button class="nav-btn" onclick="showTab('tips',this)">Pro Tips</button>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- PROGRESS BANNER (shown on all tabs) -->
+  <div class="progress-banner" id="progress-banner">
+    <div>
+      <div class="progress-label">Channels Explored</div>
+      <div class="progress-count" id="prog-count">0</div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="prog-bar" style="width:0%"></div>
+      </div>
+      <div class="progress-pct" id="prog-pct">0 of 20 channels marked · Keep going!</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ OVERVIEW ══════════════════ -->
+  <div id="overview" class="section active">
+    <h2 class="sec-title">3-Month Learning Phases</h2>
+    <p class="sec-sub">Each phase builds on the last — sentence patterns first, then conversation, then fluency.</p>
+
+    <div class="phase-grid">
+      <div class="phase-card ph1">
+        <div class="phase-num">Phase 1</div>
+        <div class="phase-name">Foundation</div>
+        <div class="phase-range">15 Mar → 15 Apr · A1 → A2</div>
+        <div class="phase-body">Build complete sentence patterns. Greetings, introductions, daily routines, simple admin phrases. Learn everything as full sentences — "Je dois envoyer ce document", "Pouvez-vous m'aider ?" Never isolated words.</div>
+        <span class="phase-tag">A1 → A2</span>
+      </div>
+      <div class="phase-card ph2">
+        <div class="phase-num">Phase 2</div>
+        <div class="phase-name">Conversation Bridge</div>
+        <div class="phase-range">15 Apr → 15 May · A2 → B1</div>
+        <div class="phase-body">Real dialogue practice. Phone calls, meetings, emails, expressing opinions, past & future tenses. Begin shadowing native speakers sentence by sentence. Focus on listening at natural speed.</div>
+        <span class="phase-tag">A2 → B1</span>
+      </div>
+      <div class="phase-card ph3">
+        <div class="phase-num">Phase 3</div>
+        <div class="phase-name">Fluency Push</div>
+        <div class="phase-range">15 May → 15 Jun · B1 → B2</div>
+        <div class="phase-body">Sustain longer conversations. Complex admin, formal emails, handling misunderstandings. Watch storytelling channels without subtitles. Write 5-sentence diary entries daily in French.</div>
+        <span class="phase-tag">B1 → B2</span>
+      </div>
+    </div>
+
+    <div class="info-box amber">
+      ⚡ <strong>Important:</strong> Since speaking & listening feel harder — in Phases 2 and 3, move 10 min from reading into extra shadowing practice. Reading is already your strong skill, so use it to push the harder skills forward.
+    </div>
+
+    <div class="info-box teal">
+      🎯 <strong>Sentence-first rule:</strong> Never write down a single word. Always write the full sentence it came from. Your brain learns French through patterns, not vocabulary lists.
+    </div>
+
+    <h2 class="sec-title" style="margin-top:1.5rem">How to Use This Page</h2>
+    <p class="sec-sub" style="margin-bottom:1rem">Click the YouTube button on any channel to open it directly. Check the box when you've explored that channel. Your progress is saved automatically.</p>
+
+    <div class="tips-grid" style="margin-top:.5rem">
+      <div class="tip-card">
+        <div class="tip-num">1</div>
+        <div class="tip-body">
+          <div class="tip-title">One video, four skills</div>
+          <div class="tip-text">Pick ONE storytelling video per day and use it across all four blocks — listen to it, shadow sentences from it, read its transcript, then write your own version in 5 sentences.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">2</div>
+        <div class="tip-body">
+          <div class="tip-title">Bookmark this page</div>
+          <div class="tip-text">Come here each morning to pick your channel for the day. Your checkboxes are saved in your browser so you can track which channels you've visited.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SCHEDULE ══════════════════ -->
+  <div id="schedule" class="section">
+    <h2 class="sec-title">Daily 2-Hour Schedule</h2>
+    <p class="sec-sub">30 minutes per skill — same order every day. Consistency beats intensity.</p>
+
+    <div class="sched-grid">
+      <div class="sched-card">
+        <div class="sched-header">
+          <div class="sched-icon si-listen">👂</div>
+          <div>
+            <div class="sched-title">Block 1 — Listening</div>
+            <div class="sched-time">30 min · Fresh ears, first thing</div>
+          </div>
+        </div>
+        <div class="sched-desc">Watch 1 video with French subtitles. Pause every 2–3 sentences and repeat them aloud. Focus on rhythm and how words blend together in natural French speech.</div>
+        <div class="sched-note">Phase 1: subtitles ON · Phase 2: French only · Phase 3: no subtitles</div>
+      </div>
+      <div class="sched-card">
+        <div class="sched-header">
+          <div class="sched-icon si-speak">🗣️</div>
+          <div>
+            <div class="sched-title">Block 2 — Speaking</div>
+            <div class="sched-time">30 min · Shadow + practice scenarios</div>
+          </div>
+        </div>
+        <div class="sched-desc">Shadow 5–10 sentences from your listening video. Then practice 1 scenario aloud: ordering, calling, explaining a task at work. Record yourself once a week.</div>
+        <div class="sched-note">Use the same video from Block 1 — the context is still fresh in your mind</div>
+      </div>
+      <div class="sched-card">
+        <div class="sched-header">
+          <div class="sched-icon si-read">📖</div>
+          <div>
+            <div class="sched-title">Block 3 — Reading</div>
+            <div class="sched-time">30 min · Your strongest skill</div>
+          </div>
+        </div>
+        <div class="sched-desc">Read transcripts, dialogues, or short stories from your channels. Read aloud slowly. Note 3 complete sentences you want to reuse — not words, always full sentences.</div>
+        <div class="sched-note">Tip: Reading video transcripts reinforces everything from Blocks 1 & 2</div>
+      </div>
+      <div class="sched-card">
+        <div class="sched-header">
+          <div class="sched-icon si-write">✍️</div>
+          <div>
+            <div class="sched-title">Block 4 — Writing</div>
+            <div class="sched-time">30 min · Final block</div>
+          </div>
+        </div>
+        <div class="sched-desc">Write 5–8 sentences using patterns from today. Start with "Aujourd'hui..." and describe a task, event, or admin situation. Phase 3: write a full professional email in French.</div>
+        <div class="sched-note">Daily starters: "Aujourd'hui j'ai... / Je dois... / J'aimerais..."</div>
+      </div>
+    </div>
+
+    <div class="info-box purple">
+      📅 <strong>Weekly rhythm suggestion:</strong> Mon–Fri follow the plan above. Saturday: rewatch one video from the week without subtitles. Sunday: record yourself speaking 5 sentences about your week. Keep the recordings — the progress from Week 1 to Week 12 will motivate you enormously.
+    </div>
+  </div>
+
+  <!-- ══════════════════ LISTENING ══════════════════ -->
+  <div id="listening" class="section">
+    <div class="skill-section">
+      <div class="skill-header">
+        <div class="skill-icon-big si-listen">👂</div>
+        <div>
+          <div class="skill-h-title">Listening Channels</div>
+          <div class="skill-h-sub">Natural speech, real conversations, gradual speed increase · Mark channels as you explore them</div>
+        </div>
+      </div>
+      <div class="info-box teal">
+        🎧 <strong>Listening strategy:</strong> Never listen passively. Always pause after each sentence and try to repeat it before moving on. Start with subtitles, remove them by Phase 2.
+      </div>
+      <div class="channels-list">
+
+        <div class="ch-card" id="ch-easy-french">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-easy-french')" id="chk-ch-easy-french"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Easy French</span><span class="ch-level-badge badge-teal">A2 → B2</span></div>
+            <div class="ch-focus-tag">Street interviews · Real people · Dual subtitles (FR + EN)</div>
+            <div class="ch-desc">Real French people answer questions in the street — about their jobs, weekends, daily life. Built-in French AND English subtitles. You hear how natural, everyday French actually sounds, including different accents and speaking speeds. Essential from Day 1.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@EasyFrench" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Day 1 · Use for Phase 1, 2 & 3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-innerfrench">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-innerfrench')" id="chk-ch-innerfrench"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">InnerFrench — Hugo</span><span class="ch-level-badge badge-coral">B1 → B2</span></div>
+            <div class="ch-focus-tag">Podcast-style · Slow clear French · Full immersion · No English</div>
+            <div class="ch-desc">Hugo speaks entirely in French, slowly and clearly, about culture, psychology, daily life and society. Perfect for training your ear to full French immersion. Great for building listening stamina over 15–20 minutes. Start this in Phase 2.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@innerFrench" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 2 (April)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-piece-of-french">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-piece-of-french')" id="chk-ch-piece-of-french"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Piece of French — Elsa</span><span class="ch-level-badge badge-teal">A2 → B1</span></div>
+            <div class="ch-focus-tag">Daily life vlog · Slow narration · Key vocab on screen · FR+EN subs</div>
+            <div class="ch-desc">Elsa narrates her real daily French life — cooking, commuting, weekend trips — speaking naturally but slowly and clearly. She highlights key vocabulary on screen. Ideal for learning life and routine vocabulary in full sentence context.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@PieceofFrench" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Day 1 · Perfect for Phase 1 & 2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-rfi">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-rfi')" id="chk-ch-rfi"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">RFI Savoirs</span><span class="ch-level-badge badge-coral">B1 → B2</span></div>
+            <div class="ch-focus-tag">News · Slower media pace · Transcripts + exercises · Professional register</div>
+            <div class="ch-desc">French public radio content at a slightly slower pace, with transcripts and comprehension exercises. Exposes you to formal, professional vocabulary used in real media — great for understanding the admin and professional registers you need at work.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@RFISavoirs" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 2–3</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SPEAKING ══════════════════ -->
+  <div id="speaking" class="section">
+    <div class="skill-section">
+      <div class="skill-header">
+        <div class="skill-icon-big si-speak">🗣️</div>
+        <div>
+          <div class="skill-h-title">Speaking Channels</div>
+          <div class="skill-h-sub">Shadowing, pronunciation, situational dialogues — your most important skill to develop</div>
+        </div>
+      </div>
+      <div class="info-box coral">
+        🎤 <strong>Shadowing rule:</strong> After every listening session, pick 5 sentences and repeat them immediately — same rhythm, same speed, same intonation as the speaker. This is the fastest way to fix pronunciation and build speaking confidence.
+      </div>
+      <div class="channels-list">
+
+        <div class="ch-card" id="ch-lingoni">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-lingoni')" id="chk-ch-lingoni"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Lingoni French</span><span class="ch-level-badge badge-purple">A1 → B2</span></div>
+            <div class="ch-focus-tag">Situational French · Office · Airport · Admin scenarios · Worksheets</div>
+            <div class="ch-desc">Organized A1–B2 with real-life scenarios: "at the office", "scheduling an appointment", "talking to a colleague", "handling a request". You practice specific dialogue situations — exactly what you need for admin and workplace French.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@lingoniFRENCH" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Day 1 · All 3 phases</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-pierre">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-pierre')" id="chk-ch-pierre"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Français avec Pierre</span><span class="ch-level-badge badge-teal">A2 → B2</span></div>
+            <div class="ch-focus-tag">Full French immersion · Grammar in real situations · Storytelling · Free transcripts</div>
+            <div class="ch-desc">Pierre explains grammar and vocabulary entirely in French using real situations and mini-stories. French subtitles available + free transcripts on his website. Excellent for training yourself to think and respond in French — not just translate in your head.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@FrancaisAvecPierre" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 1–2 (March–May)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-authentique">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-authentique')" id="chk-ch-authentique"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Français Authentique — Johan</span><span class="ch-level-badge badge-coral">A2 → B2</span></div>
+            <div class="ch-focus-tag">Think in French · Idioms · Spontaneous speech · No translation method</div>
+            <div class="ch-desc">Johan teaches you to think directly in French without translating. Covers common expressions, idioms and how native speakers actually phrase things. A huge confidence builder for speaking spontaneously — exactly what makes conversation feel hard right now.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@francaisauthentique" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 2 onward</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-geraldine">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-geraldine')" id="chk-ch-geraldine"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Comme une Française — Géraldine</span><span class="ch-level-badge badge-teal">A2 → B1</span></div>
+            <div class="ch-focus-tag">Sound natural · Cultural nuance · Pronunciation polish · Real-life language</div>
+            <div class="ch-desc">Géraldine helps you sound like a real French person, not a textbook. Covers pronunciation nuances, common mistakes, and cultural expressions that make conversation flow naturally. Great for polishing your speaking style in Phase 2.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@CommeunefrancaiseTV" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 1–2</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ READING ══════════════════ -->
+  <div id="reading" class="section">
+    <div class="skill-section">
+      <div class="skill-header">
+        <div class="skill-icon-big si-read">📖</div>
+        <div>
+          <div class="skill-h-title">Reading Channels</div>
+          <div class="skill-h-sub">Transcripts, dialogues, short texts — your strongest skill, use it to reinforce the others</div>
+        </div>
+      </div>
+      <div class="info-box purple">
+        📖 <strong>Reading strategy:</strong> Always read aloud. Use video transcripts from your listening channels — reading what you just heard doubles the learning impact. Note 3 full sentences (not words!) that you want to reuse.
+      </div>
+      <div class="channels-list">
+
+        <div class="ch-card" id="ch-alexa">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-alexa')" id="chk-ch-alexa"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Learn French with Alexa</span><span class="ch-level-badge badge-purple">A1 → B2</span></div>
+            <div class="ch-focus-tag">Level-labeled videos · Grammar in sentences · Structured lessons · Short & sweet</div>
+            <div class="ch-desc">Every video is labeled A1–C2 so you always know your exact level. Alexa teaches using full sentences and real examples — not isolated vocabulary. She writes key sentences on screen, making reading practice natural. New videos weekly, great for consistent practice.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@learnfrenchwithalexa" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Day 1 · All 3 phases</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-coffee">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-coffee')" id="chk-ch-coffee"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Coffee Break French</span><span class="ch-level-badge badge-teal">A1 → B2</span></div>
+            <div class="ch-focus-tag">Short 5-min lessons · Authentic native texts · Transcripts provided · Grammar in context</div>
+            <div class="ch-desc">Features authentic French texts on real topics narrated by native speakers. Transcripts are provided — ideal for reading alongside listening. Start with the "French to Go" playlist in your first month. Each video is 5 min — perfect for focused sessions.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@CoffeeBreakLanguages" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Day 1 — start with "French to Go" playlist</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-anne">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-anne')" id="chk-ch-anne"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Parlez-vous French — Anne Le Grand</span><span class="ch-level-badge badge-coral">A2 → B2</span></div>
+            <div class="ch-focus-tag">20+ short stories · Transcripts on website · Comprehension exercises · Daily life</div>
+            <div class="ch-desc">Anne reads over 20 short stories entirely in French with transcripts and comprehension exercises available on her website. Topics include daily life, social situations and French culture — exactly the content that builds reading fluency fast, in full sentences.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@parlezvousfrench" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 1–2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-frenchpod">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-frenchpod')" id="chk-ch-frenchpod"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">FrenchPod101</span><span class="ch-level-badge badge-purple">A1 → B2</span></div>
+            <div class="ch-focus-tag">1400+ videos · Written dialogues · Vocab in context · Cross-skill reinforcement</div>
+            <div class="ch-desc">Massive library of structured lessons with written dialogues, pronunciation guides and vocabulary shown always in full sentences. Use their playlists to read alongside listening. Excellent cross-skill reinforcement — read the dialogue, then listen to it, then shadow it.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@FrenchPod101" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Day 1 · All 3 phases</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ WRITING ══════════════════ -->
+  <div id="writing" class="section">
+    <div class="skill-section">
+      <div class="skill-header">
+        <div class="skill-icon-big si-write">✍️</div>
+        <div>
+          <div class="skill-h-title">Writing Channels & Method</div>
+          <div class="skill-h-sub">Professional French, emails, formal and informal — use transcripts to practice writing</div>
+        </div>
+      </div>
+      <div class="info-box amber">
+        ✍️ <strong>Daily writing template:</strong> "Aujourd'hui, j'ai... / Je dois... / J'aimerais..." — Use these 3 starters every day, filling them with real things from your actual day or work situation. By Phase 3, upgrade to writing a full 5-sentence professional email in French.
+      </div>
+      <div class="channels-list">
+
+        <div class="ch-card" id="ch-lingoni-write">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-lingoni-write')" id="chk-ch-lingoni-write"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Lingoni French — Writing Playlists</span><span class="ch-level-badge badge-purple">A1 → B2</span></div>
+            <div class="ch-focus-tag">Sentence structures · Grammar patterns · Downloadable worksheets</div>
+            <div class="ch-desc">Lingoni offers downloadable worksheets alongside every video — ideal for writing practice. After watching a situational video (e.g. "at the office"), use the worksheet to write your own version of the same scenario. Bridges speaking and writing naturally.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@lingoniFRENCH" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Day 1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-pierre-write">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-pierre-write')" id="chk-ch-pierre-write"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Français avec Pierre — Sentence Swap Method</span><span class="ch-level-badge badge-teal">A2 → B2</span></div>
+            <div class="ch-focus-tag">Free transcripts · Sentence patterns · Grammar in writing context</div>
+            <div class="ch-desc">After watching any Pierre video, download the free transcript from his website. Copy 5 sentences, then rewrite them replacing details with your own situation. This "sentence swapping" method is the fastest way to internalize French sentence structure for writing.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@FrancaisAvecPierre" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0f 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 1 onward</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-coffee-write">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-coffee-write')" id="chk-ch-coffee-write"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Coffee Break French — Transcript Method</span><span class="ch-level-badge badge-amber">A1 → B1</span></div>
+            <div class="ch-focus-tag">Professional phrases · Email templates · Admin French · Formal writing</div>
+            <div class="ch-desc">Use their authentic text transcripts to practise rewriting professional French. Copy a dialogue, blank out key words, then fill them back in. Then write a similar dialogue for your own work context — emails, meeting requests, schedules, admin tasks.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@CoffeeBreakLanguages" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 1 — admin focus</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ STORIES ══════════════════ -->
+  <div id="stories" class="section">
+    <div class="skill-section">
+      <div class="skill-header">
+        <div class="skill-icon-big" style="background:#FDECEA;font-size:20px">✨</div>
+        <div>
+          <div class="skill-h-title">Storytelling Channels</div>
+          <div class="skill-h-sub">Weekly experiences, event stories, mini-narratives — the most natural way to absorb sentence flow</div>
+        </div>
+      </div>
+      <div class="info-box amber">
+        ✨ <strong>Why storytelling works:</strong> Stories force your brain to predict what comes next in a sentence. This is how you stop translating word-by-word and start understanding French as a continuous flow. Use these during your listening OR reading block — or both. One video can fuel your entire 2-hour session.
+      </div>
+      <div class="channels-list">
+
+        <div class="ch-card" id="ch-elsa-story">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-elsa-story')" id="chk-ch-elsa-story"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Piece of French — Elsa</span><span class="ch-level-badge badge-teal">A2 → B1</span></div>
+            <div class="ch-focus-tag">Daily life stories · Slow clear narration · Vocab on screen · FR+EN subtitles</div>
+            <div class="ch-desc">Elsa narrates short personal stories about her week — going to the market, taking the train, cooking a meal. She speaks slowly and naturally, highlighting vocabulary on screen. Every video feels like a real mini-story of French daily life. Perfect storytelling for beginners.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@PieceofFrench" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">★ Best for storytelling beginners · Start here</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-easy-story">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-easy-story')" id="chk-ch-easy-story"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Easy French — Street Stories</span><span class="ch-level-badge badge-teal">A2 → B2</span></div>
+            <div class="ch-focus-tag">Real people · Event experiences · Natural fillers · Spontaneous storytelling</div>
+            <div class="ch-desc">"What did you do this weekend?", "Tell me about your job" — real French people tell their stories on the street. You hear natural storytelling rhythms, natural fillers (ben, eh, du coup...) and how people describe real events. Invaluable for conversation preparation.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@EasyFrench" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">★ Essential for conversation training</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-alice">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-alice')" id="chk-ch-alice"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Alice Ayel</span><span class="ch-level-badge badge-purple">A2 → B1</span></div>
+            <div class="ch-focus-tag">Slow storytelling · Visual aids · Beginner-friendly · Simple full sentences</div>
+            <div class="ch-desc">Alice tells short stories slowly with visual aids — specifically designed so learners can follow the narrative without panicking. Great for building the habit of listening to a story in French end-to-end. Uses simple, complete, correct sentences throughout.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@aliceayel" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 1 (March–April)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-immersion-story">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-immersion-story')" id="chk-ch-immersion-story"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Français Immersion</span><span class="ch-level-badge badge-purple">A1 → A2</span></div>
+            <div class="ch-focus-tag">Humor + vlog mini-stories · Shopping · Haircut · Real daily scenarios</div>
+            <div class="ch-desc">Uses humor and short vlog-style stories to teach grammar through real life situations — going to the hairdresser, shopping, meeting someone new. The storytelling format makes it easy to absorb sentence patterns without it feeling like a lesson at all.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@FrancaisImmersion" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Day 1 — great for Phase 1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-inner-story">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-inner-story')" id="chk-ch-inner-story"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">InnerFrench — Hugo</span><span class="ch-level-badge badge-coral">B1 → B2</span></div>
+            <div class="ch-focus-tag">Podcast monologues · Narrative-driven · Anecdotes · No English at all</div>
+            <div class="ch-desc">Hugo tells longer stories and anecdotes entirely in French — about history, society, culture, and personal experiences. Structured like a narrative, not a lesson. Ideal for Phase 2–3 as a 30-minute immersion storytelling session that trains sustained listening.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@innerFrench" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 2 (April) onward</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-cyprien">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-cyprien')" id="chk-ch-cyprien"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Cyprien</span><span class="ch-level-badge badge-coral">B1 → B2</span></div>
+            <div class="ch-focus-tag">Comedy sketches · Modern life stories · Slang · Youth French · EN+FR subtitles</div>
+            <div class="ch-desc">Cyprien tells funny short stories about everyday life — tech, relationships, shopping, modern habits. Natural sentence flow with contemporary French slang. English + French subtitles available. Great for Phase 2/3 once your ear is warmed up — very motivating to understand him fully.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@Cyprien" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 2–3 (April–June)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-card" id="ch-bruno">
+          <div class="ch-check-wrap"><div class="ch-check" onclick="toggleCheck('ch-bruno')" id="chk-ch-bruno"></div></div>
+          <div class="ch-body">
+            <div class="ch-top"><span class="ch-name">Bruno Maltor — Travel Storytelling</span><span class="ch-level-badge badge-coral">B1 → B2</span></div>
+            <div class="ch-focus-tag">Travel vlogs · Event experiences · Native speed · 15-min episodes</div>
+            <div class="ch-desc">Bruno narrates his travel adventures as continuous stories — what happened, who he met, what surprised him. Each 15-minute video is a self-contained event story in natural French. Speaks quickly but clearly, with subtitles. Use for Phase 3 as a challenge listening exercise.</div>
+            <div class="ch-link-row">
+              <a class="yt-link" href="https://www.youtube.com/@BrunoMaltor" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg> Open Channel</a>
+              <span class="ch-phase-note">Best from: Phase 3 (May–June) — stretch challenge</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ TIPS ══════════════════ -->
+  <div id="tips" class="section">
+    <h2 class="sec-title">Professional Tips</h2>
+    <p class="sec-sub">Techniques that make the difference between slow progress and real fluency gains in 3 months.</p>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-num">1</div>
+        <div class="tip-body">
+          <div class="tip-title">One video, four skills</div>
+          <div class="tip-text">Pick ONE storytelling video per day and use it across all four blocks — listen to it, shadow sentences from it, read its transcript, then write your own version of the story in 5 sentences. Maximum learning from minimum content.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">2</div>
+        <div class="tip-body">
+          <div class="tip-title">Sentence mining, never word lists</div>
+          <div class="tip-text">When you find a useful phrase — "Je dois envoyer ce document avant vendredi" — copy the entire sentence. Learn it, use it, adapt it. Never break it into parts. Full sentences build real fluency because that is how French actually works in your brain.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">3</div>
+        <div class="tip-body">
+          <div class="tip-title">Shadow for speaking confidence</div>
+          <div class="tip-text">After listening, immediately pause and repeat the sentence with the same rhythm, speed and intonation as the native speaker. This is how you fix pronunciation and build speaking confidence faster than any grammar study. 5 sentences per day is enough — do it every day.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">4</div>
+        <div class="tip-body">
+          <div class="tip-title">Weekly professional scenario focus</div>
+          <div class="tip-text">Every week, pick one specific work scenario — scheduling a meeting, sending a request email, explaining a delay, greeting a new colleague — and make that week's writing and speaking practice entirely about that one scenario. By June you'll have 12 scenarios mastered.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">5</div>
+        <div class="tip-body">
+          <div class="tip-title">Record yourself every Sunday</div>
+          <div class="tip-text">On Sundays, record yourself speaking 5 sentences about your week in French. Keep every recording. By June, the gap between Week 1 and Week 12 will be dramatic and very motivating — this is your best progress measurement tool.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">6</div>
+        <div class="tip-body">
+          <div class="tip-title">Fill the listening gap with passive exposure</div>
+          <div class="tip-text">Since listening is your harder skill, add 10–15 minutes of Easy French or InnerFrench as background audio during meals or commuting. Passive exposure to natural French rhythm compounds enormously over 3 months — even without active concentration.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">7</div>
+        <div class="tip-body">
+          <div class="tip-title">Phase 3 stretch — B2 test moment</div>
+          <div class="tip-text">In June, watch one full Easy French video with NO subtitles and write down everything you understood. Then rewatch with subtitles and compare. This is your B2 benchmark. The gap should be small by then — and seeing that will be one of the most satisfying moments of the whole 3 months.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">8</div>
+        <div class="tip-body">
+          <div class="tip-title">Admin French — 5 key sentences to master first</div>
+          <div class="tip-text">"Pourriez-vous m'envoyer... ?" · "Je vous contacte au sujet de..." · "Veuillez trouver ci-joint..." · "Je confirme notre rendez-vous..." · "Merci de me tenir informé(e)." — These 5 sentence structures cover 80% of everyday professional French communication. Learn them in Week 1.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Mon Plan de Français · A1 → B2 · 15 March – 15 June 2025</p>
+  <p style="margin-top:4px">Progress is saved in your browser automatically. Bonne chance ! 🇫🇷</p>
+</footer>
+
+<script>
+const TOTAL = 20;
+
+function toggleCheck(id) {
+  const el = document.getElementById('chk-' + id);
+  const isChecked = el.classList.toggle('checked');
+  const saved = JSON.parse(localStorage.getItem('french-progress') || '{}');
+  saved[id] = isChecked;
+  localStorage.setItem('french-progress', JSON.stringify(saved));
+  updateProgress();
+}
+
+function loadProgress() {
+  const saved = JSON.parse(localStorage.getItem('french-progress') || '{}');
+  Object.keys(saved).forEach(id => {
+    if (saved[id]) {
+      const el = document.getElementById('chk-' + id);
+      if (el) el.classList.add('checked');
+    }
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  const checked = document.querySelectorAll('.ch-check.checked').length;
+  const pct = Math.round((checked / TOTAL) * 100);
+  document.getElementById('prog-count').textContent = checked;
+  document.getElementById('prog-bar').style.width = pct + '%';
+  let msg = '';
+  if (pct === 0) msg = `0 of ${TOTAL} channels explored · Click a channel and start learning!`;
+  else if (pct < 25) msg = `${checked} of ${TOTAL} channels explored · Bon début !`;
+  else if (pct < 50) msg = `${checked} of ${TOTAL} channels explored · Tu progresses bien !`;
+  else if (pct < 75) msg = `${checked} of ${TOTAL} channels explored · Excellent travail !`;
+  else if (pct < 100) msg = `${checked} of ${TOTAL} channels explored · Presque là !`;
+  else msg = `All ${TOTAL} channels explored · Félicitations ! 🎉`;
+  document.getElementById('prog-pct').textContent = msg;
+}
+
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+loadProgress();
+</script>
+</body>
+</html>
