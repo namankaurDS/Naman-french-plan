@@ -180,17 +180,56 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .ms-txt{font-size:12px;color:#4a4742;line-height:1.45}
 .ms-txt.dtxt{text-decoration:line-through;color:var(--muted)}
 footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);border-top:1px solid var(--line);max-width:960px;margin:0 auto}
+
+/* ─── SHEETS SETUP ─── */
+.setup-layout{display:grid;grid-template-columns:1fr 340px;gap:24px}
+@media(max-width:720px){.setup-layout{grid-template-columns:1fr}}
+.setup-steps{display:flex;flex-direction:column;gap:0}
+.setup-step{display:flex;gap:14px;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.setup-step:last-child{border-bottom:none}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--ink);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;margin-top:1px}
+.step-body{flex:1}
+.step-title{font-weight:500;font-size:14px;margin-bottom:4px}
+.step-desc{font-size:13px;color:#4a4742;line-height:1.6}
+.setup-link{color:var(--blue);text-decoration:none;font-weight:500}
+.setup-link:hover{text-decoration:underline}
+.code-block{font-family:'Courier New',monospace;font-size:11px;background:var(--ink);color:#a8e6cf;padding:1rem;border-radius:8px;margin-top:.75rem;white-space:pre;overflow-x:auto;line-height:1.6}
+.copy-code-btn{margin-top:.6rem;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:6px 14px;border-radius:6px;border:1px solid var(--line);background:white;cursor:pointer;transition:background .15s}
+.copy-code-btn:hover{background:var(--cream)}
+.config-card{background:white;border:1px solid var(--line);border-radius:12px;padding:1.5rem;position:sticky;top:80px}
+.config-title{font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.85rem}
+.config-status-row{display:flex;align-items:center;gap:8px}
+.conn-dot{width:10px;height:10px;border-radius:50%;background:var(--line);flex-shrink:0;transition:background .3s}
+.conn-dot.connected{background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,0.2)}
+.conn-dot.error{background:var(--coral)}
+.conn-label{font-size:13px;color:var(--muted)}
+.conn-label.connected{color:#16a34a;font-weight:500}
+.conn-label.error{color:var(--coral)}
+.test-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--cream);cursor:pointer;transition:background .15s;white-space:nowrap}
+.test-btn:hover{background:var(--line)}
+.sheet-preview{border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:11px}
+.sheet-header-row{display:grid;grid-template-columns:repeat(5,1fr);background:var(--ink);color:rgba(255,255,255,.7);padding:5px 8px;gap:4px}
+.sheet-header-row span,.sheet-data-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sheet-data-row{display:grid;grid-template-columns:repeat(5,1fr);padding:5px 8px;gap:4px;border-top:1px solid var(--line);color:#4a4742}
+.sheet-data-row:nth-child(3){background:var(--cream)}
+.export-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:white;cursor:pointer;transition:background .15s;width:100%}
+.export-btn:hover{background:var(--cream)}
+/* Sheets sync badge on journal entries */
+.sync-badge{font-size:10px;font-weight:500;padding:1px 7px;border-radius:8px;display:inline-flex;align-items:center;gap:3px}
+.sync-ok{background:#dcfce7;color:#16a34a}
+.sync-pending{background:var(--amber-light);color:var(--amber)}
+.sync-off{background:var(--line);color:var(--muted)}
 </style>
 </head>
 <body>
 
 <div class="site-header">
   <div class="hinner">
-    <div class="heyebrow">Language Learning Plan · 2026</div>
+    <div class="heyebrow">Language Learning Plan · 2025</div>
     <h1 class="htitle">Mon Plan de <em>Français</em></h1>
     <p class="hsub">A structured 3-month journey from A1 to B1/B2 — 2 hours daily, 30 min per skill, focused on professional, vocational and conversational French.</p>
     <div class="hpills">
-      <span class="hpill">15 March → 15 June 2026</span>
+      <span class="hpill">15 March → 15 June 2025</span>
       <span class="hpill">A1 → B1 / B2</span>
       <span class="hpill">30 min × 4 skills daily</span>
       <span class="hpill">Sentence-Based Learning</span>
@@ -211,6 +250,7 @@ footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);border-t
     <button class="nav-btn" onclick="showTab('writing',this)">✍️ Writing</button>
     <button class="nav-btn" onclick="showTab('stories',this)">✨ Storytelling</button>
     <button class="nav-btn" onclick="showTab('tips',this)">Pro Tips</button>
+    <button class="nav-btn" onclick="showTab('setup',this)">⚙️ Sheets Setup</button>
   </div>
 </nav>
 
@@ -319,7 +359,10 @@ footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);border-t
     <div class="log-sidebar">
       <div class="sum-card">
         <div class="sum-title">Your progress</div>
-        <div class="streak-row"><span class="streak-num" id="sum-streak">0</span><span class="streak-label">day streak 🔥</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+          <div class="streak-row" style="margin-bottom:0"><span class="streak-num" id="sum-streak">0</span><span class="streak-label">day streak 🔥</span></div>
+          <span class="sync-badge sync-off" id="sheets-badge" onclick="showTab('setup',document.querySelector('[onclick*=setup]'))">⚙ Not synced</span>
+        </div>
         <div style="font-size:12px;color:var(--muted);margin-top:2px" id="sum-total">0 sessions · 0 hrs estimated</div>
         <div class="skill-bars">
           <div class="sb-row"><span class="sb-label">👂 Listen</span><div class="sb-track"><div class="sb-fill sbl" id="bar-listen" style="width:0%"></div></div><span class="sb-pct" id="pct-listen">0×</span></div>
@@ -397,9 +440,158 @@ footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);border-t
   <div class="tips-grid" id="tips-grid"></div>
 </div>
 
+<!-- GOOGLE SHEETS SETUP -->
+<div id="setup" class="section">
+  <h2 class="sec-title">Connect to Google Sheets</h2>
+  <p class="sec-sub">One-time 5-minute setup. After this, every journal entry you save will automatically appear as a new row in your Google Sheet — forever, across all devices.</p>
+
+  <div class="setup-layout">
+
+    <!-- LEFT: INSTRUCTIONS -->
+    <div>
+      <div class="setup-steps">
+
+        <div class="setup-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Create a new Google Sheet</div>
+            <div class="step-desc">Go to <a href="https://sheets.google.com" target="_blank" class="setup-link">sheets.google.com</a> and create a new blank spreadsheet. Name it <strong>"Mon Plan de Français – Journal"</strong>. Leave it open.</div>
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Open the Apps Script editor</div>
+            <div class="step-desc">In your new Sheet, click <strong>Extensions → Apps Script</strong> in the top menu. A new tab will open with a code editor.</div>
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Paste this code — replace everything in the editor</div>
+            <div class="step-desc">Select all the existing code in the editor (Ctrl+A), delete it, then paste the code below:</div>
+            <div class="code-block" id="apps-script-code">function doPost(e) {
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName('Journal');
+    if (!sheet) {
+      sheet = ss.insertSheet('Journal');
+      sheet.appendRow([
+        'Date','Week / Phase','Channel','Skills Practiced',
+        'What I watched / did','Best French sentence learned',
+        'Notes','Feeling (1-5)','Saved at'
+      ]);
+      sheet.getRange(1,1,1,9).setFontWeight('bold');
+      sheet.setFrozenRows(1);
+    }
+    var data = JSON.parse(e.postData.contents);
+    sheet.appendRow([
+      data.date,
+      data.week,
+      data.channel,
+      (data.skills||[]).join(', '),
+      data.what || '',
+      data.sentence || '',
+      data.notes || '',
+      (data.rating||'') + '/5',
+      new Date().toLocaleString()
+    ]);
+    return ContentService
+      .createTextOutput(JSON.stringify({status:'ok'}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({status:'error',msg:err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet(e) {
+  return ContentService
+    .createTextOutput(JSON.stringify({status:'ok',msg:'Journal API running'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}</div>
+            <button class="copy-code-btn" onclick="copyScript()">📋 Copy code</button>
+            <div id="copy-msg" style="font-size:12px;color:var(--teal);margin-top:5px;display:none">✓ Copied! Now paste it into the Apps Script editor.</div>
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Deploy as a web app</div>
+            <div class="step-desc">
+              In the Apps Script editor, click <strong>Deploy → New deployment</strong>.<br><br>
+              Set these options exactly:<br>
+              • <strong>Type:</strong> Web app<br>
+              • <strong>Execute as:</strong> Me<br>
+              • <strong>Who has access:</strong> Anyone<br><br>
+              Click <strong>Deploy</strong>. Google will ask you to authorise — click through the prompts and allow access.
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <div class="step-title">Copy the Web App URL and paste it below</div>
+            <div class="step-desc">After deploying, you'll see a <strong>Web app URL</strong> — it starts with <code>https://script.google.com/macros/s/...</code>. Copy it and paste it in the box on the right. Then click Save &amp; Test.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: CONFIG + STATUS -->
+    <div>
+      <div class="config-card">
+        <div class="config-title">Your Google Sheets URL</div>
+        <div class="config-status-row">
+          <div class="conn-dot" id="conn-dot"></div>
+          <span class="conn-label" id="conn-label">Not connected</span>
+        </div>
+        <div class="fg" style="margin-top:1rem">
+          <label class="fl">Paste your Web App URL here</label>
+          <input type="text" class="fi" id="sheets-url" placeholder="https://script.google.com/macros/s/...">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:.75rem">
+          <button class="save-btn" style="flex:1" onclick="saveSheetURL()">Save URL</button>
+          <button class="test-btn" onclick="testConnection()">Test connection</button>
+        </div>
+        <div id="test-result" style="font-size:12px;margin-top:8px;display:none"></div>
+
+        <div style="border-top:1px solid var(--line);margin-top:1.25rem;padding-top:1.25rem">
+          <div class="config-title" style="margin-bottom:.6rem">How entries appear in your Sheet</div>
+          <div class="sheet-preview">
+            <div class="sheet-header-row">
+              <span>Date</span><span>Week</span><span>Channel</span><span>Skills</span><span>Best sentence</span>
+            </div>
+            <div class="sheet-data-row">
+              <span>15 Mar 2025</span><span>W1 – A1</span><span>Easy French</span><span>Listening, Speaking</span><span>Je travaille...</span>
+            </div>
+            <div class="sheet-data-row" style="opacity:.5">
+              <span>16 Mar 2025</span><span>W1 – A1</span><span>Lingoni</span><span>Speaking, Writing</span><span>Pourriez-vous...</span>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:.6rem">Each save → 1 new row. 9 columns total including notes and rating.</div>
+        </div>
+
+        <div style="border-top:1px solid var(--line);margin-top:1.25rem;padding-top:1.25rem">
+          <div class="config-title" style="margin-bottom:.6rem">Export backup to CSV</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:.75rem">Download all your local journal entries as a spreadsheet file at any time.</div>
+          <button class="export-btn" onclick="exportCSV()">⬇️ Download as CSV</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </main>
 <footer>
-  <p>Mon Plan de Français · A1 → B2 · 15 March – 15 June 2026</p>
+  <p>Mon Plan de Français · A1 → B2 · 15 March – 15 June 2025</p>
   <p style="margin-top:4px">All progress saved in your browser automatically. Bonne chance ! 🇫🇷</p>
 </footer>
 
@@ -610,7 +802,7 @@ function setRating(n){
   document.querySelectorAll('.rtn').forEach((b,i)=>b.classList.toggle('sel',i<n));
 }
 
-function saveEntry(){
+async function saveEntry(){
   const date=document.getElementById('j-date').value;
   if(!date){alert('Please pick a date first!');return;}
   const skills=[];
@@ -618,17 +810,38 @@ function saveEntry(){
   if(document.getElementById('sk-speak').checked)skills.push('Speaking');
   if(document.getElementById('sk-read').checked)skills.push('Reading');
   if(document.getElementById('sk-write').checked)skills.push('Writing');
-  const entry={date,week:document.getElementById('j-week').value,channel:document.getElementById('j-channel').value,what:document.getElementById('j-what').value,sentence:document.getElementById('j-sentence').value,notes:document.getElementById('j-notes').value,skills,rating:rating||3};
+  const entry={date,week:document.getElementById('j-week').value,channel:document.getElementById('j-channel').value,what:document.getElementById('j-what').value,sentence:document.getElementById('j-sentence').value,notes:document.getElementById('j-notes').value,skills,rating:rating||3,synced:false};
   const entries=JSON.parse(localStorage.getItem('jentries')||'[]');
   const ei=entries.findIndex(e=>e.date===date);
   if(ei>=0)entries[ei]=entry;else entries.unshift(entry);
   entries.sort((a,b)=>b.date.localeCompare(a.date));
   localStorage.setItem('jentries',JSON.stringify(entries));
+  // reset form
   ['j-what','j-sentence','j-notes'].forEach(id=>document.getElementById(id).value='');
   ['sk-listen','sk-speak','sk-read','sk-write'].forEach(id=>document.getElementById(id).checked=false);
   rating=0;document.querySelectorAll('.rtn').forEach(b=>b.classList.remove('sel'));
-  const msg=document.getElementById('save-msg');msg.style.display='block';setTimeout(()=>msg.style.display='none',2500);
+  const msg=document.getElementById('save-msg');
+  msg.textContent='✓ Saved locally! Syncing to Google Sheets...';
+  msg.style.color='var(--amber)';msg.style.display='block';
   renderEntries();updateBanner();
+  // sync to sheets
+  const ok=await syncToSheets(entry);
+  if(ok){
+    // mark as synced in storage
+    const fresh=JSON.parse(localStorage.getItem('jentries')||'[]');
+    const idx=fresh.findIndex(e=>e.date===date);
+    if(idx>=0){fresh[idx].synced=true;localStorage.setItem('jentries',JSON.stringify(fresh));}
+    msg.textContent='✓ Saved & synced to Google Sheets! 📊';
+    msg.style.color='var(--teal)';
+  } else if(getSheetsURL()){
+    msg.textContent='✓ Saved locally. Sheets sync failed — check your connection in ⚙️ Sheets Setup.';
+    msg.style.color='var(--coral)';
+  } else {
+    msg.textContent='✓ Saved locally! Connect Google Sheets in ⚙️ Sheets Setup for cloud backup.';
+    msg.style.color='var(--muted)';
+  }
+  setTimeout(()=>msg.style.display='none',5000);
+  renderEntries();
 }
 
 function renderEntries(){
@@ -639,7 +852,10 @@ function renderEntries(){
   const sc={Listening:'ds-listen',Speaking:'ds-speak',Reading:'ds-read',Writing:'ds-write'};
   list.innerHTML=entries.map(e=>`
     <div class="log-entry">
-      <div class="le-date">${fmtDate(e.date)} · ${e.week}</div>
+      <div class="le-date" style="display:flex;align-items:center;justify-content:space-between">
+        <span>${fmtDate(e.date)} · ${e.week}</span>
+        <span class="sync-badge ${e.synced?'sync-ok':'sync-off'}">${e.synced?'✓ Synced':'Local only'}</span>
+      </div>
       <div class="le-row">
         ${(e.skills||[]).map(s=>`<span class="le-skill ${sc[s]||''}">${s}</span>`).join('')}
         <span class="le-ch">${e.channel}</span>
@@ -693,6 +909,99 @@ function showTab(id,btn){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+/* ─── GOOGLE SHEETS ─── */
+function getSheetsURL(){return localStorage.getItem('sheets-url')||'';}
+
+function saveSheetURL(){
+  const url=document.getElementById('sheets-url').value.trim();
+  if(!url){alert('Please paste your Web App URL first.');return;}
+  if(!url.startsWith('https://script.google.com')){alert('That doesn\'t look like a Google Apps Script URL. It should start with https://script.google.com/macros/s/...');return;}
+  localStorage.setItem('sheets-url',url);
+  updateSheetsStatus(null);
+  testConnection();
+}
+
+function testConnection(){
+  const url=getSheetsURL();
+  const res=document.getElementById('test-result');
+  if(!url){res.style.display='block';res.style.color='var(--coral)';res.textContent='⚠ No URL saved yet. Paste your Web App URL and click Save URL first.';return;}
+  res.style.display='block';res.style.color='var(--amber)';res.textContent='⏳ Testing connection...';
+  fetch(url,{method:'GET'})
+    .then(r=>r.json())
+    .then(d=>{
+      if(d.status==='ok'){
+        res.style.color='var(--teal)';res.textContent='✓ Connected! Your Google Sheet is ready to receive journal entries.';
+        updateSheetsStatus('connected');
+      } else {throw new Error(d.msg||'Unexpected response');}
+    })
+    .catch(err=>{
+      res.style.color='var(--coral)';res.textContent='✗ Could not connect. Make sure you deployed with "Anyone" access and copied the full URL. Error: '+err.message;
+      updateSheetsStatus('error');
+    });
+}
+
+function updateSheetsStatus(state){
+  const dot=document.getElementById('conn-dot');
+  const lbl=document.getElementById('conn-label');
+  const badge=document.getElementById('sheets-badge');
+  const url=getSheetsURL();
+  if(!dot)return;
+  if(state==='connected'||(!state&&url)){
+    dot.className='conn-dot connected';lbl.className='conn-label connected';lbl.textContent='Connected to Google Sheets';
+    if(badge){badge.className='sync-badge sync-ok';badge.textContent='✓ Sheets connected';}
+  } else if(state==='error'){
+    dot.className='conn-dot error';lbl.className='conn-label error';lbl.textContent='Connection error — check URL';
+    if(badge){badge.className='sync-badge sync-pending';badge.textContent='⚠ Sheets error';}
+  } else {
+    dot.className='conn-dot';lbl.className='conn-label';lbl.textContent='Not connected';
+    if(badge){badge.className='sync-badge sync-off';badge.textContent='⚙ Not synced';}
+  }
+  // populate url input if saved
+  const urlInput=document.getElementById('sheets-url');
+  if(urlInput&&url&&!urlInput.value)urlInput.value=url;
+}
+
+async function syncToSheets(entry){
+  const url=getSheetsURL();
+  if(!url)return false;
+  try{
+    const res=await fetch(url,{
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(entry)
+    });
+    const data=await res.json();
+    return data.status==='ok';
+  } catch(e){return false;}
+}
+
+function copyScript(){
+  const code=document.getElementById('apps-script-code').textContent;
+  navigator.clipboard.writeText(code).then(()=>{
+    const msg=document.getElementById('copy-msg');msg.style.display='block';
+    setTimeout(()=>msg.style.display='none',3000);
+  }).catch(()=>{
+    // fallback
+    const ta=document.createElement('textarea');ta.value=code;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    const msg=document.getElementById('copy-msg');msg.style.display='block';setTimeout(()=>msg.style.display='none',3000);
+  });
+}
+
+function exportCSV(){
+  const entries=JSON.parse(localStorage.getItem('jentries')||'[]');
+  if(!entries.length){alert('No journal entries to export yet!');return;}
+  const headers=['Date','Week / Phase','Channel','Skills','What watched / did','Best French sentence','Notes','Feeling (1-5)','Logged at'];
+  const rows=entries.map(e=>[
+    e.date,e.week,e.channel,(e.skills||[]).join('; '),
+    e.what||'',e.sentence||'',e.notes||'',(e.rating||'')+'/5',
+    new Date().toLocaleDateString()
+  ].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(','));
+  const csv=[headers.join(','),...rows].join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='mon-plan-francais-journal.csv';a.click();
+}
+
 /* ─── INIT ─── */
 document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('j-date').value=new Date().toISOString().slice(0,10);
@@ -702,6 +1011,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   renderChannels(CHANNELS.writing,'ch-writing');
   renderChannels(CHANNELS.stories,'ch-stories');
   renderWeeks();renderMilestones();renderTips();renderEntries();updateBanner();
+  updateSheetsStatus(null);
 });
 </script>
 </body>
